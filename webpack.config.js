@@ -31,7 +31,7 @@ module.exports = {
       patterns: [
         { from: "taskpane.css", to: "taskpane.css" },
         { from: "commands.html", to: "commands.html" },
-        { from: "assets/*", to: "assets/[name][ext]" },
+        { from: "assets/*.svg", to: "assets/[name][ext]" },
         { from: "manifest.xml", to: "manifest.xml" }
       ]
     })
