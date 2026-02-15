@@ -10,3 +10,13 @@ npm-debug.log*
 *.key
 .office-addin-dev-certs/
 package-lock.json
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+bin/
+obj/
+*.cache
