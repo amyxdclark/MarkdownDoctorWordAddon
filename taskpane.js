@@ -189,7 +189,8 @@ function processInlineMarkdown(text) {
   const matches = [];
   patterns.forEach(pattern => {
     let match;
-    // Reset regex lastIndex to start from beginning
+    // Reset regex lastIndex to start from beginning for each pattern
+    // Global regex maintains state between executions, resetting ensures we scan the full text
     pattern.regex.lastIndex = 0;
     while ((match = pattern.regex.exec(text)) !== null) {
       matches.push({
