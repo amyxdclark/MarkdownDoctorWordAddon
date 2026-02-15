@@ -1,0 +1,176 @@
+/* General styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f3f2f1;
+}
+
+.container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Header styling */
+.ms-welcome__header {
+    background-color: #0078d4;
+    color: white;
+    padding: 20px;
+    margin: -20px -20px 20px -20px;
+    border-radius: 0;
+}
+
+.ms-welcome__header h1 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.ms-welcome__header p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Main content */
+.ms-welcome__main {
+    background-color: white;
+    padding: 20px;
+    border-radius: 2px;
+    box-shadow: 0 1.6px 3.6px 0 rgba(0,0,0,0.132), 0 0.3px 0.9px 0 rgba(0,0,0,0.108);
+}
+
+/* Typography */
+.ms-font-xxl {
+    font-size: 24px;
+}
+
+.ms-font-xl {
+    font-size: 20px;
+}
+
+.ms-font-l {
+    font-size: 17px;
+}
+
+.ms-font-m {
+    font-size: 14px;
+}
+
+/* Sections */
+.instructions {
+    margin-bottom: 30px;
+}
+
+.instructions h2 {
+    color: #323130;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.instructions ol {
+    padding-left: 20px;
+    line-height: 1.8;
+    color: #605e5c;
+}
+
+.action-section {
+    margin: 30px 0;
+    text-align: center;
+}
+
+/* Button styling */
+.ms-Button {
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.ms-Button--primary {
+    background-color: #0078d4;
+    color: white;
+}
+
+.ms-Button--primary:hover {
+    background-color: #106ebe;
+}
+
+.ms-Button--primary:active {
+    background-color: #005a9e;
+}
+
+.ms-Button:disabled {
+    background-color: #f3f2f1;
+    color: #a19f9d;
+    cursor: not-allowed;
+}
+
+/* Message section */
+.result-section {
+    margin: 20px 0;
+    min-height: 40px;
+}
+
+.message {
+    padding: 12px;
+    border-radius: 2px;
+    font-size: 14px;
+    display: none;
+}
+
+.message.success {
+    display: block;
+    background-color: #dff6dd;
+    color: #107c10;
+    border-left: 3px solid #107c10;
+}
+
+.message.error {
+    display: block;
+    background-color: #fde7e9;
+    color: #a80000;
+    border-left: 3px solid #a80000;
+}
+
+.message.info {
+    display: block;
+    background-color: #e8f4fd;
+    color: #004578;
+    border-left: 3px solid #0078d4;
+}
+
+/* Examples section */
+.examples {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #edebe9;
+}
+
+.examples h3 {
+    color: #323130;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.examples ul {
+    padding-left: 20px;
+    line-height: 2;
+    color: #605e5c;
+}
+
+.examples li {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.examples code {
+    background-color: #f3f2f1;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+}
