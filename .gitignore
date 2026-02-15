@@ -9,3 +9,4 @@ npm-debug.log*
 *.crt
 *.key
 .office-addin-dev-certs/
+package-lock.json
