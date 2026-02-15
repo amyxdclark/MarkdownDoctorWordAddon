@@ -27,6 +27,7 @@ A Microsoft Word add-in that allows you to convert markdown text to Word format 
 
 - Node.js (version 14 or higher)
 - Microsoft Word (2016 or later, Microsoft 365, or Word Online)
+- **Optional**: Visual Studio 2022 (or later) for IDE support - See [VISUAL_STUDIO.md](VISUAL_STUDIO.md)
 
 ### Setup
 
