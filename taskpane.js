@@ -173,7 +173,7 @@ function processInlineMarkdown(text) {
   const segments = [];
   let currentPos = 0;
   
-  // Regex patterns for inline markdown
+  // Regex patterns for inline markdown (order matters - more specific patterns first)
   const patterns = [
     { regex: /\*\*\*(.+?)\*\*\*/g, format: 'bold-italic' },
     { regex: /___(.+?)___/g, format: 'bold-italic' },
@@ -189,8 +189,9 @@ function processInlineMarkdown(text) {
   const matches = [];
   patterns.forEach(pattern => {
     let match;
-    const regex = new RegExp(pattern.regex.source, 'g');
-    while ((match = regex.exec(text)) !== null) {
+    // Reset regex lastIndex to start from beginning
+    pattern.regex.lastIndex = 0;
+    while ((match = pattern.regex.exec(text)) !== null) {
       matches.push({
         start: match.index,
         end: match.index + match[0].length,
