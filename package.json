@@ -1,0 +1,36 @@
+{
+  "name": "markdown-doctor-word-addin",
+  "version": "1.0.0",
+  "description": "Microsoft Word add-in for converting Markdown to Word format",
+  "main": "taskpane.js",
+  "scripts": {
+    "start": "office-addin-debugging start manifest.xml",
+    "stop": "office-addin-debugging stop manifest.xml",
+    "validate": "office-addin-manifest validate manifest.xml",
+    "dev-server": "webpack serve --mode development"
+  },
+  "keywords": [
+    "Word",
+    "Add-in",
+    "Markdown"
+  ],
+  "author": "Amy Clark",
+  "license": "MIT",
+  "dependencies": {
+    "core-js": "^3.0.0",
+    "regenerator-runtime": "^0.13.0"
+  },
+  "devDependencies": {
+    "@types/office-js": "^1.0.0",
+    "office-addin-debugging": "^5.0.0",
+    "office-addin-dev-certs": "^1.0.0",
+    "office-addin-lint": "^2.0.0",
+    "office-addin-manifest": "^1.0.0",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0",
+    "webpack-dev-server": "^4.0.0",
+    "html-webpack-plugin": "^5.0.0",
+    "file-loader": "^6.0.0",
+    "copy-webpack-plugin": "^9.0.0"
+  }
+}

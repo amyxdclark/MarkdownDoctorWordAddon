@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Markdown Doctor</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+    <!-- Local files -->
+    <link rel="stylesheet" href="taskpane.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header class="ms-welcome__header">
+            <h1 class="ms-font-xxl">Markdown Doctor</h1>
+            <p class="ms-font-m">Convert Markdown to Word format</p>
+        </header>
+        
+        <main class="ms-welcome__main">
+            <section class="instructions">
+                <h2 class="ms-font-xl">How to use:</h2>
+                <ol>
+                    <li>Highlight the markdown text in your document</li>
+                    <li>Click the "Convert Markdown" button below</li>
+                    <li>The selected text will be converted to Word format</li>
+                </ol>
+            </section>
+
+            <section class="action-section">
+                <button id="convert" class="ms-Button ms-Button--primary">
+                    <span class="ms-Button-label">Convert Markdown</span>
+                </button>
+            </section>
+
+            <section class="result-section">
+                <div id="message" class="message"></div>
+            </section>
+
+            <section class="examples">
+                <h3 class="ms-font-l">Supported Markdown:</h3>
+                <ul>
+                    <li><strong>Bold:</strong> **text** or __text__</li>
+                    <li><em>Italic:</em> *text* or _text_</li>
+                    <li><strong><em>Bold Italic:</em></strong> ***text***</li>
+                    <li>Headers: # H1, ## H2, ### H3, etc.</li>
+                    <li>Lists: - item or 1. item</li>
+                    <li>Links: [text](url)</li>
+                    <li>Code: `code` or ```code block```</li>
+                    <li>Blockquotes: > quote</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <script type="text/javascript" src="taskpane.js"></script>
+</body>
+</html>

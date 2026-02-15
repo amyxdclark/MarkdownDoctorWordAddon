@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+npm-debug.log*
+.env
+.vscode/
+*.pem
+*.crt
+*.key
+.office-addin-dev-certs/
+package-lock.json
