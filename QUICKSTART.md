@@ -2,37 +2,45 @@
 
 ## Getting Started in 5 Minutes
 
-### Step 1: Install Dependencies
+### Step 1: Build the Project
 
+Using Visual Studio 2026:
+1. Open `MarkdownDoctorWordAddon.sln` in Visual Studio
+2. Press `Ctrl+Shift+B` to build
+
+Or using .NET CLI:
 ```bash
-npm install
+dotnet restore
+dotnet build
 ```
 
-### Step 2: Generate SSL Certificates
+### Step 2: Trust Development Certificate (First time only)
 
-For local development, you need SSL certificates:
-
-```bash
-npx office-addin-dev-certs install
-```
-
-### Step 3: Start the Development Server
+For local development, trust the .NET development certificate:
 
 ```bash
-npm run dev-server
+dotnet dev-certs https --trust
 ```
 
-Keep this terminal window open. The server will run on https://localhost:3000
+### Step 3: Run the Server
 
-### Step 4: Sideload the Add-in
+Using Visual Studio 2026:
+- Press `F5` to start debugging
 
-Open a new terminal and run:
-
+Or using .NET CLI:
 ```bash
-npm start
+dotnet run
 ```
 
-This will open Microsoft Word with your add-in loaded.
+The server will run on https://localhost:3000
+
+### Step 4: Sideload the Add-in to Word
+
+1. Open Microsoft Word
+2. Go to **Insert** > **Add-ins** > **Upload My Add-in** (or **My Add-ins**)
+3. Browse to the `manifest.xml` file in the project folder
+4. Click **Upload**
+5. The add-in will load and appear in the Home tab
 
 ## Using the Add-in
 
@@ -63,8 +71,9 @@ This is **bold** and this is *italic*.
 
 Here's a complete example:
 
-1. Open Word (via `npm start`)
-2. Type this markdown:
+1. Start the server (`dotnet run` or `F5` in Visual Studio)
+2. Open Word and sideload the add-in (see Step 4)
+3. Type this markdown:
 
 ```markdown
 ## Project Status
@@ -78,9 +87,9 @@ The project is **on track** and we have completed:
 > Note: Final review scheduled for next week.
 ```
 
-3. Select all the text you just typed
-4. Click "Convert Markdown" in the task pane
-5. See your markdown transformed into formatted Word text!
+4. Select all the text you just typed
+5. Click "Convert Markdown" in the task pane
+6. See your markdown transformed into formatted Word text!
 
 ## Supported Markdown
 
@@ -96,9 +105,9 @@ The project is **on track** and we have completed:
 
 ### Add-in not showing in Word?
 
-- Verify the dev server is running on https://localhost:3000
-- Check that you ran `npm start` to sideload the add-in
-- Try closing and reopening Word
+- Verify the server is running on https://localhost:3000
+- Try clearing the Office add-in cache and reopening Word
+- Re-sideload the add-in via Insert > Add-ins
 
 ### "Please select some text first" message?
 
@@ -107,17 +116,22 @@ The project is **on track** and we have completed:
 
 ### SSL Certificate errors?
 
-Run:
+Trust the development certificate:
 ```bash
-npx office-addin-dev-certs install --force
+dotnet dev-certs https --trust
 ```
 
-Then restart the dev server.
+Then restart the server.
+
+### Port already in use?
+
+If port 3000 is busy, you can change it in `Properties/launchSettings.json` and update `manifest.xml` with the new URL.
 
 ## Next Steps
 
 - Check out [EXAMPLE.md](EXAMPLE.md) for more markdown examples
 - Read the full [README.md](README.md) for detailed documentation
+- See [VISUAL_STUDIO.md](VISUAL_STUDIO.md) for Visual Studio-specific guidance
 - Visit the [GitHub repository](https://github.com/amyxdclark/MarkdownDoctorWordAddon) for updates
 
 ## Need Help?

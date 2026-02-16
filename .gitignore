@@ -1,14 +1,35 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
+bin/
+obj/
+publish/
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# Log files
 *.log
 npm-debug.log*
+
+# Environment files
 .env
+.env.*
+
+# IDE and editor directories
 .vscode/
+.idea/
+
+# SSL Certificates
 *.pem
 *.crt
 *.key
 .office-addin-dev-certs/
+
+# npm lock file (use package.json for version info)
 package-lock.json
 
 # Visual Studio
@@ -17,6 +38,27 @@ package-lock.json
 *.suo
 *.userosscache
 *.sln.docstates
-bin/
-obj/
 *.cache
+
+# .NET Core
+*.deps.json
+*.runtimeconfig.json
+*.runtimeconfig.dev.json
+
+# NuGet
+*.nupkg
+.nuget/
+packages/
+
+# Windows image file caches
+*_i.c
+*_p.c
+*.ilk
+
+# Rider
+.idea/
+
+# User-specific files
+*.rsuser
+*.userprefs
+*.sublime-*

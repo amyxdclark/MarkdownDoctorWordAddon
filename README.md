@@ -25,11 +25,13 @@ A Microsoft Word add-in that allows you to convert markdown text to Word format 
 
 ### Prerequisites
 
-- Node.js (version 14 or higher)
+- **Visual Studio 2026** (or later) with the following workloads:
+  - **ASP.NET and web development** workload
+  - **Office/SharePoint development** workload (optional, for advanced Office development tools)
+- **.NET 8.0 SDK** or later
 - Microsoft Word (2016 or later, Microsoft 365, or Word Online)
-- **Optional**: Visual Studio 2022 (or later) for IDE support - See [VISUAL_STUDIO.md](VISUAL_STUDIO.md)
 
-### Setup
+### Setup with Visual Studio 2026
 
 1. Clone this repository:
    ```bash
@@ -37,27 +39,38 @@ A Microsoft Word add-in that allows you to convert markdown text to Word format 
    cd MarkdownDoctorWordAddon
    ```
 
-2. Install dependencies:
+2. Open **MarkdownDoctorWordAddon.sln** in Visual Studio 2026
+
+3. Build the solution:
+   - Press `Ctrl+Shift+B` or go to Build > Build Solution
+
+4. Run the project:
+   - Press `F5` to start debugging
+   - The ASP.NET Core server will start on https://localhost:3000
+
+5. Sideload the add-in to Word:
+   - In Word, go to Insert > Add-ins > Upload My Add-in
+   - Browse to the `manifest.xml` file in the project folder
+   - Click Upload
+
+### Setup with .NET CLI (Alternative)
+
+1. Clone this repository:
    ```bash
-   npm install
+   git clone https://github.com/amyxdclark/MarkdownDoctorWordAddon.git
+   cd MarkdownDoctorWordAddon
    ```
 
-3. Generate SSL certificates for local development:
+2. Build and run:
    ```bash
-   npx office-addin-dev-certs install
+   dotnet restore
+   dotnet build
+   dotnet run
    ```
 
-4. Start the development server:
-   ```bash
-   npm run dev-server
-   ```
+3. The server will start on https://localhost:3000
 
-5. In another terminal, sideload the add-in to Word:
-   ```bash
-   npm start
-   ```
-
-This will open Microsoft Word with the add-in loaded.
+4. Sideload the add-in to Word as described above
 
 ## Usage
 
@@ -96,55 +109,64 @@ Here's some `inline code` and a [link](https://example.com).
 
 ```
 MarkdownDoctorWordAddon/
-├── manifest.xml          # Add-in manifest file
-├── package.json          # Node.js dependencies
-├── webpack.config.js     # Webpack configuration
-├── taskpane.html         # Main UI
-├── taskpane.css          # Styling
-├── taskpane.js           # Main logic
-├── commands.html         # Command functions
-├── assets/               # Icons and images
-└── README.md            # This file
+├── MarkdownDoctorWordAddon.sln    # Visual Studio solution file
+├── MarkdownDoctorWordAddin.csproj # C# project file
+├── Program.cs                     # ASP.NET Core application entry point
+├── Properties/
+│   └── launchSettings.json        # VS launch configuration
+├── appsettings.json              # Application configuration
+├── appsettings.Development.json  # Development configuration
+├── manifest.xml                  # Office Add-in manifest
+├── wwwroot/                      # Static web files
+│   ├── taskpane.html            # Main UI
+│   ├── taskpane.css             # Styling
+│   ├── taskpane.js              # Main logic
+│   ├── commands.html            # Command functions
+│   └── assets/                  # Icons and images
+└── README.md                    # This file
 ```
 
 ### Key Files
 
 - **manifest.xml**: Defines the add-in's capabilities and appearance in Word
-- **taskpane.html**: The user interface shown in the task pane
-- **taskpane.js**: Contains the markdown parsing and Word formatting logic
-- **taskpane.css**: Styles for the task pane UI
+- **Program.cs**: ASP.NET Core server configuration
+- **wwwroot/taskpane.html**: The user interface shown in the task pane
+- **wwwroot/taskpane.js**: Contains the markdown parsing and Word formatting logic
+- **wwwroot/taskpane.css**: Styles for the task pane UI
 
 ### Building for Production
 
 To create a production build:
 
 ```bash
-npm run build
+dotnet publish -c Release
 ```
 
-The built files will be in the `dist/` directory.
+The published files will be in the `bin/Release/net8.0/publish/` directory.
 
 ## Troubleshooting
 
 ### Add-in doesn't appear in Word
 
-1. Make sure the development server is running (`npm run dev-server`)
+1. Make sure the ASP.NET Core server is running (https://localhost:3000)
 2. Try clearing Office's cache and restarting Word
-3. Check that the manifest is valid: `npm run validate`
+3. Verify the manifest.xml file is valid
 
-### Conversion not working
+### Server not starting
 
-1. Make sure you have text selected before clicking "Convert Markdown"
-2. Check the browser console (F12) for any errors
-3. Ensure your markdown syntax is correct
+1. Make sure port 3000 is not in use by another application
+2. Check that .NET 8.0 SDK is installed: `dotnet --version`
+3. Try running `dotnet restore` to restore dependencies
 
 ### SSL Certificate Issues
 
-If you see SSL certificate warnings:
+The ASP.NET Core development server uses a development certificate. If you see SSL warnings:
 
 ```bash
-npx office-addin-dev-certs install --force
+dotnet dev-certs https --trust
 ```
+
+This command trusts the development certificate on your machine.
 
 ## Contributing
 
