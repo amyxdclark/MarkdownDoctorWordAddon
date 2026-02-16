@@ -28,8 +28,8 @@ A Microsoft Word add-in that allows you to convert markdown text to Word format 
 - **Visual Studio 2026** (or later) with the following workloads:
   - **ASP.NET and web development** workload
   - **Office/SharePoint development** workload (optional, for advanced Office development tools)
-- **.NET 8.0 SDK** or later
-- Microsoft Word (2016 or later, Microsoft 365, or Word Online)
+- **.NET 10 SDK** or later
+- Microsoft Word Desktop (2016 or later, Microsoft 365) or Word Online
 
 ### Setup with Visual Studio 2026
 
@@ -142,7 +142,7 @@ To create a production build:
 dotnet publish -c Release
 ```
 
-The published files will be in the `bin/Release/net8.0/publish/` directory.
+The published files will be in the `bin/Release/net10.0/publish/` directory.
 
 ## Troubleshooting
 
@@ -155,7 +155,7 @@ The published files will be in the `bin/Release/net8.0/publish/` directory.
 ### Server not starting
 
 1. Make sure port 3000 is not in use by another application
-2. Check that .NET 8.0 SDK is installed: `dotnet --version`
+2. Check that .NET 10 SDK is installed: `dotnet --version`
 3. Try running `dotnet restore` to restore dependencies
 
 ### SSL Certificate Issues
