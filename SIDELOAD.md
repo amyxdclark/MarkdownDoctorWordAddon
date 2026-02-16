@@ -2,13 +2,22 @@
 
 This guide explains how to install ("sideload") the Markdown Doctor add-in into Microsoft Word for development and testing.
 
-## Important: Web Add-ins vs. COM Add-ins
+## Important: Understanding Office Add-ins vs. Other Add-in Types
 
-**Markdown Doctor is a Web Add-in (Office Add-in)**, not a COM Add-in. When looking for where to add it in Word, you need to find the option for **web-based Office Add-ins**, not "COM Add-ins" or "Word Add-ins" in the traditional sense.
+**Markdown Doctor is an Office Add-in (Web Add-in)**, not a COM Add-in or Word Add-in template. This is crucial to understand when installing:
 
-- **Web Add-ins / Office Add-ins**: Modern, web-based add-ins that run in a task pane (what this project is)
-- **COM Add-ins**: Legacy add-ins built with COM/VSTO technology
-- **Word Add-ins (Templates)**: Document templates with macros
+### What Type of Add-in Is This?
+- ✅ **Office Add-ins** (also called "Web Add-ins"): Modern, web-based add-ins that run in a task pane - **THIS IS WHAT MARKDOWN DOCTOR IS**
+- ❌ **COM Add-ins**: Legacy add-ins built with COM/VSTO technology - **NOT THIS**
+- ❌ **Word Add-ins**: Document templates with macros (.dotm files) - **NOT THIS**
+
+### Why Does This Matter?
+When you go to **File > Options > Add-ins** in Word, you'll see a "Manage:" dropdown at the bottom. This dropdown has multiple options like:
+- "Word Add-ins" (for document templates)
+- "COM Add-ins" (for legacy add-ins)
+- **"Office Add-ins"** ← **YOU NEED TO SELECT THIS ONE**
+
+**Common Confusion**: Many users select "Word Add-ins" thinking it means "add-ins for Word", but that's actually for document templates. You need to select **"Office Add-ins"** for this project.
 
 ## Prerequisites
 
@@ -20,9 +29,29 @@ Before sideloading:
    ```
 3. Verify the server is working by visiting https://localhost:3000/taskpane.html in your browser
 
-## Sideloading Instructions
+## Sideloading Instructions for Microsoft 365 Desktop Word
 
-### Option 1: Using the Insert Tab (Most Common)
+### Method 1: Using File > Options (Most Reliable for Desktop Word)
+
+This is the **recommended method** for Microsoft 365 desktop Word:
+
+1. Go to **File** > **Options**
+2. Select **Add-ins** from the left sidebar
+3. At the bottom of the screen, next to **"Manage:"**, you'll see a dropdown menu
+4. Click the dropdown menu (it may currently show "COM Add-ins" or "Word Add-ins")
+5. **Select "Office Add-ins"** from the dropdown
+   - **Important**: Do NOT select "Word Add-ins" or "COM Add-ins" - these are for different types of add-ins
+   - You need to select **"Office Add-ins"** (sometimes also called "Web Add-ins")
+6. Click the **Go...** button
+7. In the Office Add-ins dialog that appears, look for **"Upload My Add-in"** or **"MY ADD-INS"** tab
+8. Click **"Upload My Add-in"** (you may see a folder icon)
+9. Click **Browse...** and navigate to the `manifest.xml` file in the project folder
+10. Select the file and click **Upload**
+11. The add-in should now appear in Word's Home tab ribbon
+
+### Method 2: Using the Insert Tab (Alternative)
+
+If you prefer using the ribbon:
 
 1. Open **Microsoft Word**
 2. Click the **Insert** tab in the ribbon
@@ -33,28 +62,16 @@ Before sideloading:
 7. Click **Browse** and navigate to the `manifest.xml` file in this project folder
 8. Click **Upload**
 
-### Option 2: Using the Home Tab (If Available)
+### Method 3: Using the Home Tab (If Available)
 
 Some versions of Word show Add-ins options in the Home tab:
 
 1. Open **Microsoft Word**
 2. Click the **Home** tab
 3. Look for **Add-ins** button in the ribbon
-4. Click it and follow the same steps as Option 1
+4. Click it and follow the same steps as Method 2
 
-### Option 3: Using File > Options (Word Desktop)
-
-If you can't find the Add-ins option:
-
-1. Go to **File** > **Options**
-2. Select **Add-ins** from the left sidebar
-3. At the bottom, next to "Manage:", select **COM Add-ins** dropdown
-4. **Change it to "Office Add-ins"** (NOT COM Add-ins!)
-5. Click **Go...**
-6. In the Office Add-ins dialog, click **Upload My Add-in**
-7. Browse to the `manifest.xml` file and upload it
-
-### Option 4: Network Share Method (Windows)
+### Method 4: Network Share Method (Windows - For Advanced Users)
 
 For more persistent sideloading during development:
 
