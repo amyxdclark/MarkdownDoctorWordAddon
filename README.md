@@ -48,10 +48,12 @@ A Microsoft Word add-in that allows you to convert markdown text to Word format 
    - Press `F5` to start debugging
    - The ASP.NET Core server will start on https://localhost:3000
 
-5. Sideload the add-in to Word:
-   - In Word, go to Insert > Add-ins > Upload My Add-in
+5. Sideload the add-in to Word (see [SIDELOAD.md](SIDELOAD.md) for detailed instructions):
+   - In Word, go to **Insert** > **Add-ins** > **My Add-ins** > **Upload My Add-in**
    - Browse to the `manifest.xml` file in the project folder
-   - Click Upload
+   - Click **Upload**
+   
+   > **Note**: This is a Web Add-in (Office Add-in), not a COM Add-in. Look for options to manage "Office Add-ins" or "My Add-ins", not "COM Add-ins" or "Word Add-ins" in the traditional sense. See [SIDELOAD.md](SIDELOAD.md) for step-by-step guidance for different Word versions.
 
 ### Setup with .NET CLI (Alternative)
 
@@ -70,7 +72,11 @@ A Microsoft Word add-in that allows you to convert markdown text to Word format 
 
 3. The server will start on https://localhost:3000
 
-4. Sideload the add-in to Word as described above
+4. Sideload the add-in to Word:
+   - See [SIDELOAD.md](SIDELOAD.md) for detailed instructions
+   - Quick path: In Word, go to **Insert** > **Add-ins** > **My Add-ins** > **Upload My Add-in**
+   
+   > **Note**: This is a Web Add-in, not a COM Add-in. If you see "Word Add-ins" or "COM Add-ins" options, those are for different types of add-ins.
 
 ## Usage
 
@@ -146,11 +152,24 @@ The published files will be in the `bin/Release/net10.0/publish/` directory.
 
 ## Troubleshooting
 
+### Can't find where to add the add-in
+
+This is a **Web Add-in** (also called an "Office Add-in"), not a COM Add-in or traditional Word Add-in.
+
+- **DO NOT** use "COM Add-ins" - those are for legacy add-ins
+- **DO NOT** use "Word Add-ins" - those are for document templates with macros
+- **DO** look for "My Add-ins" or "Office Add-ins"
+
+See [SIDELOAD.md](SIDELOAD.md) for detailed instructions with multiple methods to find the right menu.
+
 ### Add-in doesn't appear in Word
 
 1. Make sure the ASP.NET Core server is running (https://localhost:3000)
-2. Try clearing Office's cache and restarting Word
+2. Try clearing Office's cache and restarting Word:
+   - **Windows**: Delete `%LOCALAPPDATA%\Microsoft\Office\16.0\Wef\`
+   - **Mac**: Delete `~/Library/Containers/com.microsoft.Word/Data/Documents/wef`
 3. Verify the manifest.xml file is valid
+4. Re-sideload the add-in (see [SIDELOAD.md](SIDELOAD.md))
 
 ### Server not starting
 

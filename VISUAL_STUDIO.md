@@ -82,13 +82,23 @@ MarkdownDoctorWordAddon/
 
 ## Sideloading the Add-in
 
+**Important**: This is a **Web Add-in** (Office Add-in), not a COM Add-in or traditional Word add-in.
+
 After starting the server:
 
 1. Open Microsoft Word
-2. Go to **Insert** > **Add-ins** > **Upload My Add-in** (or **My Add-ins**)
+2. Go to **Insert** > **Add-ins** > **My Add-ins** > **Upload My Add-in**
 3. Browse to `manifest.xml` in the project folder
 4. Click **Upload**
 5. The add-in will appear in the Home tab ribbon
+
+If you can't find "My Add-ins" or "Upload My Add-in":
+- Try **File** > **Options** > **Add-ins**
+- Change the "Manage:" dropdown from "COM Add-ins" to **"Office Add-ins"**
+- Click **Go**
+- Then click **Upload My Add-in**
+
+For detailed instructions, see [SIDELOAD.md](SIDELOAD.md).
 
 ## Troubleshooting
 
