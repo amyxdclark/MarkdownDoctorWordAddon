@@ -8,7 +8,7 @@ This project is designed for Visual Studio 2026 using C# and ASP.NET Core.
   - **ASP.NET and web development** workload
   - **Office/SharePoint development** workload (optional, for advanced Office tools)
   
-- **.NET 8.0 SDK** or later - Download from https://dotnet.microsoft.com/download
+- **.NET 10 SDK** or later - Download from https://dotnet.microsoft.com/download
 
 ## Opening the Project
 
@@ -98,7 +98,7 @@ After starting the server:
    - Windows: `netstat -an | findstr :3000`
    - Change the port in `Properties/launchSettings.json` if needed
 
-2. Ensure .NET 8.0 SDK is installed:
+2. Ensure .NET 10 SDK is installed:
    ```bash
    dotnet --list-sdks
    ```
