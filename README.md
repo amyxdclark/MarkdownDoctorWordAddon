@@ -49,11 +49,20 @@ A Microsoft Word add-in that allows you to convert markdown text to Word format 
    - The ASP.NET Core server will start on https://localhost:3000
 
 5. Sideload the add-in to Word (see [SIDELOAD.md](SIDELOAD.md) for detailed instructions):
+   
+   **For Microsoft 365 Desktop Word (Recommended Method):**
+   - Go to **File** > **Options** > **Add-ins**
+   - At the bottom, change the **"Manage:"** dropdown to **"Office Add-ins"** (NOT "Word Add-ins" or "COM Add-ins")
+   - Click **Go...** then **Upload My Add-in**
+   - Browse to the `manifest.xml` file in the project folder
+   - Click **Upload**
+   
+   **Alternative Method:**
    - In Word, go to **Insert** > **Add-ins** > **My Add-ins** > **Upload My Add-in**
    - Browse to the `manifest.xml` file in the project folder
    - Click **Upload**
    
-   > **Note**: This is a Web Add-in (Office Add-in), not a COM Add-in. Look for options to manage "Office Add-ins" or "My Add-ins", not "COM Add-ins" or "Word Add-ins" in the traditional sense. See [SIDELOAD.md](SIDELOAD.md) for step-by-step guidance for different Word versions.
+   > **Important Note**: This is an **Office Add-in** (Web Add-in), not a COM Add-in or Word Add-in template. When using File > Options > Add-ins, make sure to select **"Office Add-ins"** from the "Manage:" dropdown, NOT "Word Add-ins" (which is for document templates). See [SIDELOAD.md](SIDELOAD.md) for detailed step-by-step guidance with explanations.
 
 ### Setup with .NET CLI (Alternative)
 
@@ -74,9 +83,10 @@ A Microsoft Word add-in that allows you to convert markdown text to Word format 
 
 4. Sideload the add-in to Word:
    - See [SIDELOAD.md](SIDELOAD.md) for detailed instructions
-   - Quick path: In Word, go to **Insert** > **Add-ins** > **My Add-ins** > **Upload My Add-in**
+   - **Recommended for Desktop Word**: Go to **File** > **Options** > **Add-ins**, change "Manage:" to **"Office Add-ins"**, click **Go**, then **Upload My Add-in**
+   - **Alternative**: Go to **Insert** > **Add-ins** > **My Add-ins** > **Upload My Add-in**
    
-   > **Note**: This is a Web Add-in, not a COM Add-in. If you see "Word Add-ins" or "COM Add-ins" options, those are for different types of add-ins.
+   > **Important Note**: This is an **Office Add-in** (Web Add-in). When using File > Options > Add-ins, select **"Office Add-ins"** from the "Manage:" dropdown, NOT "Word Add-ins" (which is for document templates) or "COM Add-ins" (which is for legacy add-ins).
 
 ## Usage
 
@@ -154,13 +164,24 @@ The published files will be in the `bin/Release/net10.0/publish/` directory.
 
 ### Can't find where to add the add-in
 
-This is a **Web Add-in** (also called an "Office Add-in"), not a COM Add-in or traditional Word Add-in.
+This is an **Office Add-in** (also called a "Web Add-in"), not a COM Add-in or Word Add-in template.
 
-- **DO NOT** use "COM Add-ins" - those are for legacy add-ins
-- **DO NOT** use "Word Add-ins" - those are for document templates with macros
-- **DO** look for "My Add-ins" or "Office Add-ins"
+**Recommended approach for Microsoft 365 Desktop Word:**
+1. Go to **File** > **Options** > **Add-ins**
+2. At the bottom, find the **"Manage:"** dropdown
+3. Select **"Office Add-ins"** (NOT "Word Add-ins" or "COM Add-ins")
+4. Click **Go...** button
+5. Click **Upload My Add-in**
 
-See [SIDELOAD.md](SIDELOAD.md) for detailed instructions with multiple methods to find the right menu.
+**Alternative approaches:**
+- Try **Insert** > **Add-ins** > **My Add-ins** > **Upload My Add-in**
+- Try **Insert** > **Get Add-ins** > **My Add-ins** > **Upload My Add-in**
+
+**What NOT to use:**
+- ❌ **"COM Add-ins"** - These are for legacy add-ins built with COM/VSTO
+- ❌ **"Word Add-ins"** - These are for document templates (.dotm files), not Office Add-ins
+
+See [SIDELOAD.md](SIDELOAD.md) for detailed instructions with multiple methods and troubleshooting help.
 
 ### Add-in doesn't appear in Word
 

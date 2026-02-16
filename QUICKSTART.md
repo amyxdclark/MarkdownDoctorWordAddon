@@ -36,9 +36,24 @@ The server will run on https://localhost:3000
 
 ### Step 4: Sideload the Add-in to Word
 
-**Important**: This is a **Web Add-in** (also called an "Office Add-in"), not a COM Add-in. If you see options for "Word Add-ins" or "COM Add-ins" in the ribbon, those are for different types of add-ins.
+**Important**: This is an **Office Add-in** (also called a "Web Add-in"), not a COM Add-in or Word Add-in template. This distinction matters when you're looking for where to install it.
 
-For **Microsoft 365 / Word 2019+**:
+#### Recommended Method for Microsoft 365 Desktop Word:
+
+1. Open Microsoft Word
+2. Go to **File** > **Options**
+3. Select **Add-ins** from the left sidebar
+4. At the bottom, find the **"Manage:"** dropdown menu
+5. Click the dropdown and select **"Office Add-ins"**
+   - **Critical**: Do NOT select "Word Add-ins" (those are document templates) or "COM Add-ins" (those are legacy add-ins)
+   - You need **"Office Add-ins"** for this project
+6. Click the **Go...** button
+7. In the Office Add-ins dialog, click **"Upload My Add-in"**
+8. Click **Browse** and navigate to the `manifest.xml` file in the project folder
+9. Click **Upload**
+10. The add-in will load and appear in the Home tab
+
+#### Alternative Method - Using Insert Tab:
 
 1. Open Microsoft Word
 2. Go to **Insert** tab in the ribbon
@@ -49,9 +64,7 @@ For **Microsoft 365 / Word 2019+**:
 7. Click **Upload**
 8. The add-in will load and appear in the Home tab
 
-If you can't find these options, try **File** > **Options** > **Add-ins**, then change the "Manage:" dropdown from "COM Add-ins" to **"Office Add-ins"** and click **Go**.
-
-For detailed instructions with screenshots and troubleshooting, see [SIDELOAD.md](SIDELOAD.md).
+For detailed instructions with troubleshooting, see [SIDELOAD.md](SIDELOAD.md).
 
 ## Using the Add-in
 
@@ -116,13 +129,20 @@ The project is **on track** and we have completed:
 
 ### Can't find where to upload the add-in?
 
-This is a **Web Add-in** (Office Add-in). Common places to look:
-- **Insert** > **Add-ins** > **My Add-ins** > **Upload My Add-in**
-- **File** > **Options** > **Add-ins** > Change "Manage:" to "Office Add-ins" > **Go**
+This is an **Office Add-in** (Web Add-in). Common places to look:
 
-Do NOT use:
-- "COM Add-ins" (these are for legacy add-ins)
-- "Word Add-ins" (these are for document templates)
+**Method 1 (Recommended for Desktop Word):**
+- **File** > **Options** > **Add-ins**
+- At the bottom, change **"Manage:"** dropdown to **"Office Add-ins"** (NOT "Word Add-ins" or "COM Add-ins")
+- Click **Go...** > **Upload My Add-in**
+
+**Method 2 (Alternative):**
+- **Insert** > **Add-ins** > **My Add-ins** > **Upload My Add-in**
+
+**What NOT to use:**
+- ❌ "COM Add-ins" (for legacy add-ins)
+- ❌ "Word Add-ins" (for document templates)
+- ✅ You need "Office Add-ins" for this project
 
 See [SIDELOAD.md](SIDELOAD.md) for detailed, step-by-step instructions.
 
